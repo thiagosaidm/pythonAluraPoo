@@ -1,10 +1,10 @@
+#classe pai - herança
 
-class Filme:
-    def __init__(self, nome, ano, duracao, likes):
-        self.__nome = nome.title()
+class Programa:
+    def __init__(self, nome, ano, likes):
+        self._nome = nome.title()
         self.ano = ano
-        self.duracao = duracao
-        self.__likes = likes
+        self._likes = likes
 
     @property
     def likes(self):
@@ -12,18 +12,24 @@ class Filme:
 
     @likes.setter
     def likes(self, cont_likes):
-        self.__likes = cont_likes
+        self._likes = cont_likes
 
     def _dar_likes(self):
-        self.__likes += 1
+        self._likes += 1
 
     def ver_atributos(self):
-        print(" Nome:{}\n Ano:{} \n Duração:{} \n Likes:{}". format(self.__nome, self.ano, self.duracao, self.__likes))
+        print(" Nome:{}\n Ano:{} \n Likes:{}". format(self._nome, self.ano, self._likes))
 
-class Serie:
-    def __init__(self, nome, ano, temporadas):
-        self.nome = nome
-        self.ano = ano
+
+class Filme(Programa):
+    def __init__(self, nome, ano, duracao, likes):
+        super().__init__(nome, ano, likes)
+        self.duracao = duracao
+
+
+class Serie(Programa):
+    def __init__(self, nome, ano, temporadas, likes):
+        super().__init__(nome, ano, likes)
         self.temporadas = temporadas
 
 
