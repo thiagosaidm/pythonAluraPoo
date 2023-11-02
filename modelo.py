@@ -23,6 +23,24 @@ class Programa:
     def __str__(self):
         return "NOME:{} - ANO:{} - LIKES:{}". format(self._nome, self.ano, self._likes)
 
+class Playlist:
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self._programas = programas
+
+    def __getitem__(self, item):
+        return self._programas[item]
+
+    @property
+    def listagem(self):
+        return self._programas
+
+    @property
+    def tamanho(self):
+        return len(self._programas)
+
+
+
 class Filme(Programa):
     def __init__(self, nome, ano, duracao, likes):
         super().__init__(nome, ano, likes)
@@ -59,13 +77,16 @@ class Anime(Programa):
         return "NOME:{} - ANO:{} - EPISÓDIOS: {} - LIKES:{}".format(self._nome, self.ano, self.episodios,
                                                                              self._likes)
 
-
 one_piece = Anime("one piece", 1999, 1076, 10)
 piratas_do_caribe = Filme("piratas do caribe", 2004, 160, 5)
 lupin = Serie("lupin", 2020, 3, 1)
 deuses = Documentario("eram os deuses astronautas",2010,180,3)
 
-playlist = [lupin, piratas_do_caribe, one_piece, deuses]
+animes = [one_piece]
 
-for programa in playlist:
+thiago_playlist = Playlist("Playlist do Thiago", animes)
+
+print("Tamanho da Playlist: {}".format(thiago_playlist.tamanho))
+
+for programa in thiago_playlist:
     print(programa)
