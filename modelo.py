@@ -6,6 +6,10 @@ class Programa:
         self.ano = ano
         self._likes = likes
 
+
+    def __eq__(self, other):
+        return self._nome == other._nome
+
     @property
     def likes(self):
         return self._likes
@@ -79,6 +83,7 @@ class Anime(Programa):
 
 one_piece = Anime("one piece", 1999, 1076, 10)
 piratas_do_caribe = Filme("piratas do caribe", 2004, 160, 5)
+piratas_do_caribe2 = Filme("piratas do caribe 2", 2004, 160, 5)
 lupin = Serie("lupin", 2020, 3, 1)
 deuses = Documentario("eram os deuses astronautas",2010,180,3)
 
@@ -90,3 +95,5 @@ print("Tamanho da Playlist: {}".format(thiago_playlist.tamanho))
 
 for programa in thiago_playlist:
     print(programa)
+
+print(piratas_do_caribe == piratas_do_caribe2)
