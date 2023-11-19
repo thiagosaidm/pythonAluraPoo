@@ -8,6 +8,7 @@ class Programa:
 
 
     def __eq__(self, other):
+        isinstance(self, Programa)
         return self._nome == other._nome
 
     @property
@@ -96,4 +97,7 @@ print("Tamanho da Playlist: {}".format(thiago_playlist.tamanho))
 for programa in thiago_playlist:
     print(programa)
 
-print(piratas_do_caribe == piratas_do_caribe2)
+print(piratas_do_caribe2 == piratas_do_caribe2)
+
+print(issubclass(Anime, Programa))
+print(isinstance(one_piece, Anime))
